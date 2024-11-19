@@ -1,0 +1,38 @@
+name: PGAdmin
+version: 0.1
+main: org.PGAdmin.Main
+api-version: 1.21
+description: Плагин облегчающий администрирование сервера
+commands:
+  getServerTechInfo:
+    description: Возвращает основную техническую информацию о сервере.
+    usage: /GetServerTechInfo
+  setFlySpeed:
+    description: Устанавливает скорость полёта
+    usage: /setFlySpeed
+  setWalkSpeed:
+    description: Устанавливает скорость ходьбы
+    usage: /setWalkSpeed
+  Freeze:
+    description: /"Замораживает/" игрока
+    usage: /freeze
+  Unfreeze:
+    description: /"Разамораживает/" игрока
+    usage: /unfreeze
+  GetPlayerCoordinates:
+    description: Возвращает координаты указанного игрока
+    usage: /getPlayerCoordinates
+  GetPlayerBedCoordinates:
+    description: Возвращает координаты кровати указанного игрока
+    usage: /getPlayerBedCoordinates
+  GetAllPlayers:
+    description: Возвращает список всех игроков когда-либо заходивших на сервер
+    usage: /getAllPlayers
+  GetServerProgressInfo:
+    description: Возвращает информацию о прогрессе в этом мире
+    usage: /getServerProgressInfo
+  GetPlayerInventory:
+    description: Возвращает информацию об инвентаре игрока
+    usage: /getPlayerInventory
+
+
