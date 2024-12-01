@@ -9,20 +9,18 @@ import org.bukkit.ChatColor;
 
 import static org.PGAdmin.Main.frozenPlayers;
 
-public class MovementHandler implements Listener{
+public class FrozenPlayerMoveHandler implements Listener{
 
-    public MovementHandler(){}
+    public FrozenPlayerMoveHandler(){}
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
 
-        if((event.getFrom().getY() < event.getTo().getY() || event.getFrom().getY() > event.getTo().getY()
-               || event.getFrom().getX() < event.getTo().getX() || event.getFrom().getX() > event.getTo().getX()
-               || event.getFrom().getZ() > event.getTo().getZ() || event.getFrom().getZ() < event.getTo().getZ())
-               && frozenPlayers.isPlayerFrozen(player.getName()))
+        if(frozenPlayers.isPlayerFrozen(player.getName()))
         {
               event.setCancelled(true);
               player.sendMessage(ChatColor.RED + "Вы заморожены!");
         }
     }
+
 }

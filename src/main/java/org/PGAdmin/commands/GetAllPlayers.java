@@ -25,8 +25,12 @@ public class GetAllPlayers implements CommandExecutor {
             OfflinePlayer[] offlinePlayers = Bukkit.getOfflinePlayers();
             sender.sendMessage(ChatColor.GREEN + "Список всех игроков когда-либо заходивших на сервер: ");
             for (int i = 0; i < offlinePlayers.length; i++) {
-                sender.sendMessage((i + 1) + ". §b" + offlinePlayers[i].getName() + ChatColor.RESET + " "
-                + new SimpleDateFormat("dd/MM/yyyy").format(new Date(offlinePlayers[i].getLastSeen())));
+                if(offlinePlayers[i].isOnline()) {
+                    sender.sendMessage((i + 1) + ". §b" + offlinePlayers[i].getName() + ChatColor.GREEN + " [Онлайн]");
+                }else {
+                    sender.sendMessage((i + 1) + ". §b" + offlinePlayers[i].getName() + ChatColor.RESET + " "
+                    + new SimpleDateFormat("dd/MM/yyyy").format(new Date(offlinePlayers[i].getLastSeen())));
+                }
             }
         } else sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды");
         return true;

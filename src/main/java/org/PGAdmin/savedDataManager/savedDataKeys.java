@@ -7,4 +7,5 @@ public class savedDataKeys {
     public static final String NetherEnteringTimeKey = "NetherEnteringTime";
     public static final String EndWhoEnteredNameKey = "EndWhoEnteredName";
     public static final String EndEnteringTimeKey = "EndEnteringTime";
+    public static final String FrozenPlayersKey = "FrozenPlayers";
 }

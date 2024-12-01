@@ -1,9 +1,7 @@
 package org.PGAdmin;
 
 import org.PGAdmin.commands.*;
-import org.PGAdmin.eventHandlers.DimensionEnterHandler;
-import org.PGAdmin.eventHandlers.DragonDeathHandler;
-import org.PGAdmin.eventHandlers.MovementHandler;
+import org.PGAdmin.eventHandlers.*;
 import org.PGAdmin.globalVariables.FrozenPlayers;
 import org.PGAdmin.savedDataManager.savedDataManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,7 +23,11 @@ public class Main extends JavaPlugin {
         getCommand("getAllPlayers").setExecutor(new GetAllPlayers(this));
         getCommand("getServerProgressInfo").setExecutor(new GetServerProgressInfo(this));
         getCommand("getPlayerInventory").setExecutor(new GetPlayerInventory(this));
-        getServer().getPluginManager().registerEvents(new MovementHandler(), this);
+        getServer().getPluginManager().registerEvents(new FrozenPlayerMoveHandler(), this);
+        getServer().getPluginManager().registerEvents(new FrozenPlayerAttackHandler(), this);
+        getServer().getPluginManager().registerEvents(new FrozenPlayerInteractHandler(), this);
+        getServer().getPluginManager().registerEvents(new FrozenPlayerPlaceBlockHandler(), this);
+        getServer().getPluginManager().registerEvents(new FrozenPlayerBreakBlockHandler(), this);
         getServer().getPluginManager().registerEvents(new DragonDeathHandler(), this);
         getServer().getPluginManager().registerEvents(new DimensionEnterHandler(), this);
         getLogger().info("PGAdmin has been enabled!");

@@ -41,6 +41,6 @@ public class GetServerTechInfo implements CommandExecutor {
                 return true;
         }
         else sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды");
-        return false;
+        return true;
     }
 }

@@ -1,6 +1,6 @@
 package org.PGAdmin.globalVariables;
 
-import org.PGAdmin.savedDataManager.savedDataManager;
+import org.PGAdmin.savedDataManager.savedDataKeys;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class FrozenPlayers{
     private final String key;
 
     public FrozenPlayers(){
-        key = "FrozenPlayers";
+        key = savedDataKeys.FrozenPlayersKey;
         if(sdManager.isDataExist(key)){
             this.frozenPlayers = sdManager.getListData(key);
         }
