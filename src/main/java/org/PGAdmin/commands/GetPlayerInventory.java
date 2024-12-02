@@ -36,7 +36,11 @@ public class GetPlayerInventory implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "/getplayerinventory <ник игрока>");
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды, либо вы пытаетесь использовать её с консоли");
+            if(sender instanceof ConsoleCommandSender) {
+                sender.sendMessage(ChatColor.RED + "Консоль не может выполнить данную команду");
+            } else if (sender instanceof Player) {
+                sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды");
+            }
         }
 
         return true;
