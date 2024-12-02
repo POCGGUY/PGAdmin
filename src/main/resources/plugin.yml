@@ -34,5 +34,11 @@ commands:
   GetPlayerInventory:
     description: Возвращает информацию об инвентаре игрока
     usage: /getPlayerInventory
+  Heal:
+    description: Восполнить уровень здоровья игрока
+    usage: /heal
+  Feed:
+    description: Восполнить уровень голода игрока
+    usage: /feed
 
 

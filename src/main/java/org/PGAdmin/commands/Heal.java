@@ -11,16 +11,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GetPlayerInventory implements CommandExecutor {
+public class Heal implements CommandExecutor {
     private final JavaPlugin plugin;
 
-    public GetPlayerInventory(JavaPlugin plugin) {
+    public Heal(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player && sender.isOp()) {
+        if(sender.isOp()) {
             try {
                 String playerName = args[0];
                 Player targetPlayer = Bukkit.getPlayer(playerName);
@@ -28,15 +28,15 @@ public class GetPlayerInventory implements CommandExecutor {
                     sender.sendMessage("Игрок с таким ником не найден.");
                     return false;
                 }
-                Inventory inventory = targetPlayer.getInventory();
-                Player viewer = (Player) sender;
-                viewer.openInventory(inventory);
+                targetPlayer.setHealth(20);
+                targetPlayer.getActivePotionEffects().forEach(effect -> targetPlayer.removePotionEffect(effect.getType()));
+                sender.sendMessage(ChatColor.GREEN + "Вы успешно вылечили игрока: " + targetPlayer.getName());
             }catch (Exception ee) {
                 sender.sendMessage(ChatColor.RED + "Ошибка: убедитесь правильно ли вы ввели команду, например: ");
-                sender.sendMessage(ChatColor.RED + "/getplayerinventory <ник игрока>");
+                sender.sendMessage(ChatColor.RED + "/heal <ник игрока>");
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды, либо вы пытаетесь использовать её с консоли");
+            sender.sendMessage(ChatColor.RED + "У вас нет прав на использование данной команды");
         }
 
         return true;

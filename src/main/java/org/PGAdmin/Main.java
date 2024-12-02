@@ -23,6 +23,8 @@ public class Main extends JavaPlugin {
         getCommand("getAllPlayers").setExecutor(new GetAllPlayers(this));
         getCommand("getServerProgressInfo").setExecutor(new GetServerProgressInfo(this));
         getCommand("getPlayerInventory").setExecutor(new GetPlayerInventory(this));
+        getCommand("feed").setExecutor(new Feed(this));
+        getCommand("heal").setExecutor(new Heal(this));
         getServer().getPluginManager().registerEvents(new FrozenPlayerMoveHandler(), this);
         getServer().getPluginManager().registerEvents(new FrozenPlayerAttackHandler(), this);
         getServer().getPluginManager().registerEvents(new FrozenPlayerInteractHandler(), this);

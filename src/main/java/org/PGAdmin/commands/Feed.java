@@ -11,16 +11,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GetPlayerInventory implements CommandExecutor {
+public class Feed implements CommandExecutor {
     private final JavaPlugin plugin;
 
-    public GetPlayerInventory(JavaPlugin plugin) {
+    public Feed(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player && sender.isOp()) {
+        if(sender.isOp()) {
             try {
                 String playerName = args[0];
                 Player targetPlayer = Bukkit.getPlayer(playerName);
@@ -28,15 +28,15 @@ public class GetPlayerInventory implements CommandExecutor {
                     sender.sendMessage("Игрок с таким ником не найден.");
                     return false;
                 }
-                Inventory inventory = targetPlayer.getInventory();
-                Player viewer = (Player) sender;
-                viewer.openInventory(inventory);
+                targetPlayer.setFoodLevel(20);
+                targetPlayer.setSaturation(20);
+                sender.sendMessage(ChatColor.GREEN + "Вы успешно насытили игрока: " + targetPlayer.getName());
             }catch (Exception ee) {
                 sender.sendMessage(ChatColor.RED + "Ошибка: убедитесь правильно ли вы ввели команду, например: ");
-                sender.sendMessage(ChatColor.RED + "/getplayerinventory <ник игрока>");
+                sender.sendMessage(ChatColor.RED + "/feed <ник игрока>");
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "У вас нет прав на выполнение данной команды, либо вы пытаетесь использовать её с консоли");
+            sender.sendMessage(ChatColor.RED + "У вас нет прав на использование данной команды");
         }
 
         return true;

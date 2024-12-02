@@ -36,7 +36,7 @@ public class GetServerTechInfo implements CommandExecutor {
                 sender.sendMessage("§bДоступное ОЗУ: §f" + availableMemoryColor + availableMemory + ChatColor.RESET + " MB");
                 sender.sendMessage("§bМаксимальное ОЗУ: §f" + maxMemory + " MB");
                 sender.sendMessage("§bТики в секунду (TPS): §f" + String.format("%.2f", tps));
-                sender.sendMessage("§bКоличество игроков онлайн: ");
+                sender.sendMessage("§bКоличество игроков онлайн: " + plugin.getServer().getOnlinePlayers().toArray().length);
 
                 return true;
         }
